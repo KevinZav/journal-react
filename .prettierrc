@@ -1,0 +1,15 @@
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "strictFunctionTypes": true,
+  "bracketSpacing": true,
+  "noImplicitReturns": true,
+  "noUnusedLocals": true,
+  "noImplicitAny": true,
+  "noImplicitThis": true,
+  "alwaysStrict": true,
+  "strictBindCallApply": true,
+  "strictNullChecks": false,
+  "strictPropertyInitialization": false
+}
