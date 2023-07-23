@@ -1,9 +1,9 @@
-import { Box } from '@mui/material';
-import { JournalType } from '../../shared/models/components/journal';
+import { Box, Toolbar } from '@mui/material';
+import { JournalType } from '../../shared/models/components';
 import { FC } from 'react';
 import { Navbar, SideBar } from '../components';
 
-const drawerWith = 240;
+const drawerWith = 280;
 
 export const JournalLayout: FC<JournalType> = ({ children }) => {
   return (
@@ -13,8 +13,7 @@ export const JournalLayout: FC<JournalType> = ({ children }) => {
       <SideBar drawerWith={drawerWith}></SideBar>
 
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        {/* toolbar */}
-
+        <Toolbar/>
         {children}
       </Box>
     </Box>

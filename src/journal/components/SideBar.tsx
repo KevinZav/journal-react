@@ -1,6 +1,19 @@
-import { Box, Drawer, Toolbar, Typography } from '@mui/material';
+import {
+  Box,
+  Divider,
+  Drawer,
+  Grid,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import { FC } from 'react';
 import { SideBarType } from '../../shared';
+import { TurnedInNot } from '@mui/icons-material';
 
 export const SideBar: FC<SideBarType> = ({ drawerWith }) => {
   return (
@@ -18,6 +31,24 @@ export const SideBar: FC<SideBarType> = ({ drawerWith }) => {
             Kevin Zavala
           </Typography>
         </Toolbar>
+        <Divider />
+        <List>
+          {['Enero', 'Febrero', 'Marzo', 'Abril'].map((month) => (
+            <ListItem key={month} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <TurnedInNot></TurnedInNot>
+                </ListItemIcon>
+                <Grid container>
+                  <ListItemText primary={month}></ListItemText>
+                  <ListItemText
+                    secondary={'Lorem ipsum dolor sit amet'}
+                  ></ListItemText>
+                </Grid>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
       </Drawer>
     </Box>
   );
