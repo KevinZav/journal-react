@@ -14,8 +14,12 @@ import {
 import { FC } from 'react';
 import { SideBarType } from '../../shared';
 import { TurnedInNot } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
 
 export const SideBar: FC<SideBarType> = ({ drawerWith }) => {
+
+  const { user } = useSelector((state: any) => state.auth)
+
   return (
     <Box component="nav" sx={{ width: { sm: drawerWith }, flexShrink: { sm: 0 } }}>
       <Drawer
@@ -28,7 +32,7 @@ export const SideBar: FC<SideBarType> = ({ drawerWith }) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Kevin Zavala
+            {user.displayName}
           </Typography>
         </Toolbar>
         <Divider />

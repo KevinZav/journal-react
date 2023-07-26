@@ -4,7 +4,7 @@ import { AuthStateEnum } from "../../shared/enums";
 
 
 const initialState: AuthInitialState = {
-  state: AuthStateEnum.NOT_AUTHENTICATED,
+  state: AuthStateEnum.CHECKING,
   user: {
     uid: '',
     displayName: '',
@@ -18,16 +18,23 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state) => {
-      console.log(state)
+    login: (state, payload) => {
+      state.state = AuthStateEnum.AUTHENTICATED;
+      state.user = payload.payload;
+      state.errorMessage = '';
     },
     logout: (state, payload) => {
-      console.log(state, payload)
+      state.errorMessage = payload.payload.error;
+      state.state = AuthStateEnum.NOT_AUTHENTICATED;
+      state.user = initialState.user;
     },
     checkingCredentias: (state) => {
-      console.log(state)
+      state.state = AuthStateEnum.CHECKING;
+    },
+    setNotAuthenticated: (state) => {
+      state.state = AuthStateEnum.NOT_AUTHENTICATED;
     }
   }
 })
 
-export const { login, logout, checkingCredentias } = authSlice.actions
+export const { login, logout, checkingCredentias, setNotAuthenticated } = authSlice.actions

@@ -7,7 +7,7 @@ const drawerWith = 280;
 
 export const JournalLayout: FC<JournalType> = ({ children }) => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }} className="animate__animated animate__fadeIn">
       <Navbar drawerWith={drawerWith}></Navbar>
 
       <SideBar drawerWith={drawerWith}></SideBar>

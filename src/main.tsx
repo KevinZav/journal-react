@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import JournalApp from './JournalApp';
 import { BrowserRouter } from 'react-router-dom';
 import './styles.css';
+import 'animate.css';
 import { Provider } from 'react-redux';
 import { store } from './store';
 

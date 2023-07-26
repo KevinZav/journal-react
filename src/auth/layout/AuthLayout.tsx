@@ -14,7 +14,7 @@ export const AuthLayout: FC<AuthType> = ({children, title}) => {
     >
       <Grid
         item
-        className="box-shadow"
+        className="box-shadow animate__animated animate__fadeIn"
         xs={3}
         sx={{ backgroundColor: 'white', padding: 3, borderRadius: 2, width: { sm: 450 } }}
       >
