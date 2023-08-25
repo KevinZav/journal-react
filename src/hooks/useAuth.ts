@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { firebaseAuth } from "../firebase/config";
 import { login, logout } from "../store/auth";
+import { startLoadingNotes } from "../store/journal";
 
 
 export const useAuth = () => {
@@ -22,6 +23,7 @@ export const useAuth = () => {
         email,
       };
       dispatch(login(userAuth));
+      dispatch(startLoadingNotes());
     });
   }, []);
 

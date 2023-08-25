@@ -49,6 +49,10 @@ export const useForm = <T extends FormValues>( initialForm: T, formValidations: 
         setFormState( initialForm );
     }
 
+    const updateFormValue = (newFormState: T) => {
+        setFormState(newFormState)
+    }
+
     return {
         ...formState,
         formState,
@@ -57,6 +61,7 @@ export const useForm = <T extends FormValues>( initialForm: T, formValidations: 
         formValidation,
         valid,
         onInputTouch,
-        touched
+        touched,
+        updateFormValue
     }
 }

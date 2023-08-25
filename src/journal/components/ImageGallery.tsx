@@ -1,4 +1,6 @@
 import { ImageList, ImageListItem } from "@mui/material";
+import { FC } from "react";
+import { ImageListItemType } from "../../shared/models/components/imageListItem";
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -9,7 +11,7 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
   };
 }
 
-export const ImageGallery = () => {
+export const ImageGallery: FC<ImageListItemType> = ({images}) => {
   return (
     <ImageList
       sx={{ width: "100%", height: 500 }}
@@ -17,11 +19,11 @@ export const ImageGallery = () => {
       cols={4}
       rowHeight={200}
     >
-      {itemData.map((item) => (
-        <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
+      {images.map((item) => (
+        <ImageListItem key={item}>
           <img
-            {...srcset(item.img, 121, item.rows, item.cols)}
-            alt={item.title}
+            src={`${item}`}
+            alt="note-images"
             loading="lazy"
           />
         </ImageListItem>

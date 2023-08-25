@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { NavbarType } from '../../shared';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../store/auth/thunks';
+import { setInitialValueJournal } from '../../store/journal';
 
 export const Navbar: FC<NavbarType> = ({ drawerWith }) => {
 
@@ -11,6 +12,7 @@ export const Navbar: FC<NavbarType> = ({ drawerWith }) => {
 
   const logout = () => {
     dispatch(startLogout());
+    dispatch(setInitialValueJournal())
   }
 
   return (

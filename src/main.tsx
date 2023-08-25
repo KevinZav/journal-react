@@ -4,6 +4,7 @@ import JournalApp from './JournalApp';
 import { BrowserRouter } from 'react-router-dom';
 import './styles.css';
 import 'animate.css';
+import 'sweetalert2/dist/sweetalert2.min.css';
 import { Provider } from 'react-redux';
 import { store } from './store';
 

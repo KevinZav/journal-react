@@ -12,13 +12,25 @@ import {
   Typography,
 } from '@mui/material';
 import { FC } from 'react';
-import { SideBarType } from '../../shared';
+import { Note, SideBarType } from '../../shared';
 import { TurnedInNot } from '@mui/icons-material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveNote } from '../../store/journal';
 
 export const SideBar: FC<SideBarType> = ({ drawerWith }) => {
-
+  const dispatch = useDispatch();
   const { user } = useSelector((state: any) => state.auth)
+  const { notes } = useSelector((state: any) => state.journal);
+
+  const onSelectNote = (note: Note) => {
+    dispatch(setActiveNote(note));
+  }
+
+  const displayText = (text: string): string => {
+    return text.length < 24
+      ? text
+      : text.slice(0,20) + '...';
+  }
 
   return (
     <Box component="nav" sx={{ width: { sm: drawerWith }, flexShrink: { sm: 0 } }}>
@@ -37,16 +49,16 @@ export const SideBar: FC<SideBarType> = ({ drawerWith }) => {
         </Toolbar>
         <Divider />
         <List>
-          {['Enero', 'Febrero', 'Marzo', 'Abril'].map((month) => (
-            <ListItem key={month} disablePadding>
-              <ListItemButton>
+          {notes.map((note: Note) => (
+            <ListItem key={note.id} disablePadding>
+              <ListItemButton onClick={() => onSelectNote(note)}>
                 <ListItemIcon>
                   <TurnedInNot></TurnedInNot>
                 </ListItemIcon>
                 <Grid container>
-                  <ListItemText primary={month}></ListItemText>
+                  <ListItemText primary={displayText(note.title)}></ListItemText>
                   <ListItemText
-                    secondary={'Lorem ipsum dolor sit amet'}
+                    secondary={displayText(note.body)}
                   ></ListItemText>
                 </Grid>
               </ListItemButton>
